@@ -156,7 +156,7 @@ export const Encoder: React.FC = () => {
                     <select 
                         value={fromBase}
                         onChange={(e) => setFromBase(Number(e.target.value))}
-                        className="w-full bg-black/30 border border-white/10 rounded-xl p-2 text-white outline-none focus:border-blue-500"
+                        className="w-full bg-black/30 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-blue-500 transition-all cursor-pointer hover:bg-black/40"
                     >
                         {SYSTEM_OPTIONS.map(opt => (
                             <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -168,7 +168,7 @@ export const Encoder: React.FC = () => {
                     <select 
                         value={toBase}
                         onChange={(e) => setToBase(Number(e.target.value))}
-                        className="w-full bg-black/30 border border-white/10 rounded-xl p-2 text-white outline-none focus:border-blue-500"
+                        className="w-full bg-black/30 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-blue-500 transition-all cursor-pointer hover:bg-black/40"
                     >
                          {SYSTEM_OPTIONS.map(opt => (
                             <option key={opt.value} value={opt.value}>{opt.label}</option>

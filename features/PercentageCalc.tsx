@@ -43,7 +43,7 @@ export const PercentageCalc: React.FC = () => {
                     type="number" 
                     value={val1}
                     onChange={(e) => setVal1(e.target.value)}
-                    className="w-20 bg-black/30 border border-white/10 rounded-lg p-2 text-center text-white outline-none focus:border-green-500"
+                    className="w-24 bg-black/30 border border-white/10 rounded-xl p-3 text-center text-white outline-none focus:border-green-500 transition-all placeholder-slate-600"
                     placeholder="%"
                 />
                 <span>% от</span>
@@ -51,7 +51,7 @@ export const PercentageCalc: React.FC = () => {
                     type="number" 
                     value={val2}
                     onChange={(e) => setVal2(e.target.value)}
-                    className="w-24 bg-black/30 border border-white/10 rounded-lg p-2 text-center text-white outline-none focus:border-green-500"
+                    className="w-32 bg-black/30 border border-white/10 rounded-xl p-3 text-center text-white outline-none focus:border-green-500 transition-all placeholder-slate-600"
                     placeholder="Число"
                 />
                 <span>?</span>
@@ -69,7 +69,7 @@ export const PercentageCalc: React.FC = () => {
                     type="number" 
                     value={val3}
                     onChange={(e) => setVal3(e.target.value)}
-                    className="w-20 bg-black/30 border border-white/10 rounded-lg p-2 text-center text-white outline-none focus:border-green-500"
+                    className="w-24 bg-black/30 border border-white/10 rounded-xl p-3 text-center text-white outline-none focus:border-green-500 transition-all placeholder-slate-600"
                     placeholder="A"
                 />
                 <span>составляет какой % от</span>
@@ -77,7 +77,7 @@ export const PercentageCalc: React.FC = () => {
                     type="number" 
                     value={val4}
                     onChange={(e) => setVal4(e.target.value)}
-                    className="w-24 bg-black/30 border border-white/10 rounded-lg p-2 text-center text-white outline-none focus:border-green-500"
+                    className="w-32 bg-black/30 border border-white/10 rounded-xl p-3 text-center text-white outline-none focus:border-green-500 transition-all placeholder-slate-600"
                     placeholder="B"
                 />
                 <span>?</span>

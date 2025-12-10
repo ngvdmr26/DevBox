@@ -54,20 +54,20 @@ export const UnitConverter: React.FC = () => {
                     {/* Background decoration */}
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-50"></div>
 
-                    <div className="w-full grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] gap-4 items-center">
+                    <div className="w-full grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] gap-6 items-center">
                         {/* FROM */}
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                              <input 
                                 type="number" 
                                 value={value}
                                 onChange={(e) => setValue(e.target.value)}
-                                className="w-full text-3xl font-bold bg-transparent border-b border-white/20 pb-2 outline-none text-white focus:border-blue-500 transition-colors text-center md:text-left"
+                                className="w-full text-3xl font-bold bg-transparent border-b border-white/20 pb-2 outline-none text-white focus:border-blue-500 transition-colors text-center md:text-left placeholder-slate-600"
                                 placeholder="0"
                             />
                             <select 
                                 value={fromUnit}
                                 onChange={(e) => setFromUnit(e.target.value as Unit)}
-                                className="w-full bg-black/20 text-slate-300 text-sm rounded-lg p-2 border border-white/10 outline-none"
+                                className="w-full bg-black/30 text-white text-base rounded-xl p-3 border border-white/10 outline-none focus:border-cyan-500 transition-all cursor-pointer hover:bg-black/40"
                             >
                                 {Object.keys(UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                             </select>
@@ -79,14 +79,14 @@ export const UnitConverter: React.FC = () => {
                         </div>
 
                         {/* TO */}
-                        <div className="space-y-2">
-                            <div className="w-full text-3xl font-bold pb-2 text-emerald-400 break-all text-center md:text-right min-h-[3rem]">
+                        <div className="space-y-3">
+                            <div className="w-full text-3xl font-bold pb-2 text-emerald-400 break-all text-center md:text-right min-h-[3rem] border-b border-transparent">
                                 {result}
                             </div>
                             <select 
                                 value={toUnit}
                                 onChange={(e) => setToUnit(e.target.value as Unit)}
-                                className="w-full bg-black/20 text-slate-300 text-sm rounded-lg p-2 border border-white/10 outline-none"
+                                className="w-full bg-black/30 text-white text-base rounded-xl p-3 border border-white/10 outline-none focus:border-cyan-500 transition-all cursor-pointer hover:bg-black/40"
                             >
                                 {Object.keys(UNITS).map(u => <option key={u} value={u}>{u}</option>)}
                             </select>

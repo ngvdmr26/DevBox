@@ -36,7 +36,7 @@ export const UuidGenerator: React.FC = () => {
                     max="50" 
                     value={count}
                     onChange={(e) => setCount(Math.min(50, Math.max(1, parseInt(e.target.value) || 1)))}
-                    className="w-full bg-black/30 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-pink-500"
+                    className="w-full bg-black/30 border border-white/10 rounded-xl p-3 text-white outline-none focus:border-pink-500 transition-all"
                 />
             </div>
             <Button onClick={generate} className="h-[50px] px-6">
