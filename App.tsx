@@ -380,7 +380,7 @@ const App: React.FC = () => {
                 onClick={() => setActiveTool(tool.id)}
                 className="
                     relative overflow-hidden group
-                    bg-white/5 hover:bg-white/10 backdrop-blur-xl border border-white/10 
+                    bg-slate-900/60 hover:bg-slate-800/80 backdrop-blur-xl border border-white/10 
                     p-6 rounded-3xl text-left transition-all duration-300 
                     hover:shadow-2xl hover:shadow-blue-900/20 
                     hover:-translate-y-2 hover:scale-[1.02]
