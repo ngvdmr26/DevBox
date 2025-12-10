@@ -279,11 +279,11 @@ export const SystemMonitor: React.FC = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <div className="text-xs text-slate-500 mb-1">Canvas Hash</div>
-                                    <div className="font-mono text-xs text-orange-200 bg-orange-900/20 border border-orange-500/20 p-2 rounded">{canvasHash}</div>
+                                    <div className="font-mono text-xs text-orange-200 bg-orange-900/20 border border-orange-500/20 p-2 rounded break-all">{canvasHash}</div>
                                 </div>
                                 <div>
                                     <div className="text-xs text-slate-500 mb-1">Audio Hash</div>
-                                    <div className="font-mono text-xs text-orange-200 bg-orange-900/20 border border-orange-500/20 p-2 rounded">{audioHash}</div>
+                                    <div className="font-mono text-xs text-orange-200 bg-orange-900/20 border border-orange-500/20 p-2 rounded break-all">{audioHash}</div>
                                 </div>
                             </div>
                         </div>
@@ -320,7 +320,7 @@ export const SystemMonitor: React.FC = () => {
                         </div>
                         
                         <div className="text-center py-6 border-b border-white/5 mb-6">
-                             <div className="text-4xl font-mono font-bold text-white mb-2">{networkLoading ? '...' : network?.ip}</div>
+                             <div className="text-3xl md:text-4xl font-mono font-bold text-white mb-2 break-all">{networkLoading ? '...' : network?.ip}</div>
                              <div className="text-sm text-slate-500">Ваш публичный IP</div>
                         </div>
 
@@ -330,14 +330,14 @@ export const SystemMonitor: React.FC = () => {
                              <ul className="space-y-4 text-sm">
                                 <li className="flex justify-between items-center">
                                     <span className="text-slate-400">Локация</span>
-                                    <span className="text-white font-medium flex items-center gap-2">
+                                    <span className="text-white font-medium flex items-center gap-2 text-right">
                                         {network.flag && <img src={network.flag} alt="flag" className="w-5 rounded-sm" />}
                                         {network.country}, {network.city}
                                     </span>
                                 </li>
                                 <li className="flex justify-between">
                                     <span className="text-slate-400">Провайдер</span>
-                                    <span className="text-white font-medium">{network.isp}</span>
+                                    <span className="text-white font-medium text-right max-w-[200px]">{network.isp}</span>
                                 </li>
                                 <li className="flex justify-between">
                                     <span className="text-slate-400">Тип сети</span>
@@ -365,7 +365,7 @@ export const SystemMonitor: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                          <div className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
                             <div className="text-3xl font-bold text-white mb-1">{clicks}</div>
                             <div className="text-[10px] text-slate-400 uppercase font-bold">Кликов</div>
@@ -403,7 +403,7 @@ export const SystemMonitor: React.FC = () => {
                             </li>
                              <li className="flex justify-between pt-1">
                                 <span className="text-slate-400">Timezone</span>
-                                <span className="text-white font-medium">{Intl.DateTimeFormat().resolvedOptions().timeZone}</span>
+                                <span className="text-white font-medium text-right">{Intl.DateTimeFormat().resolvedOptions().timeZone}</span>
                             </li>
                         </ul>
                     </div>

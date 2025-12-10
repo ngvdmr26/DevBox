@@ -61,7 +61,7 @@ export const UnitConverter: React.FC = () => {
                                 type="number" 
                                 value={value}
                                 onChange={(e) => setValue(e.target.value)}
-                                className="w-full text-3xl font-bold bg-transparent border-b border-white/20 pb-2 outline-none text-white focus:border-blue-500 transition-colors text-center md:text-left placeholder-slate-600"
+                                className="w-full text-2xl md:text-3xl font-bold bg-transparent border-b border-white/20 pb-2 outline-none text-white focus:border-blue-500 transition-colors text-center md:text-left placeholder-slate-600"
                                 placeholder="0"
                             />
                             <select 
@@ -80,7 +80,7 @@ export const UnitConverter: React.FC = () => {
 
                         {/* TO */}
                         <div className="space-y-3">
-                            <div className="w-full text-3xl font-bold pb-2 text-emerald-400 break-all text-center md:text-right min-h-[3rem] border-b border-transparent">
+                            <div className="w-full text-2xl md:text-3xl font-bold pb-2 text-emerald-400 break-all text-center md:text-right min-h-[3rem] border-b border-transparent">
                                 {result}
                             </div>
                             <select 
