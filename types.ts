@@ -1,0 +1,50 @@
+
+import React from 'react';
+
+export enum ToolId {
+  HOME = 'HOME',
+  PASSWORD_GENERATOR = 'PASSWORD_GENERATOR',
+  ENCODER = 'ENCODER',
+  SPEED_TEST = 'SPEED_TEST',
+  JSON_TOOLS = 'JSON_TOOLS',
+  QR_GENERATOR = 'QR_GENERATOR',
+  UNIT_CONVERTER = 'UNIT_CONVERTER',
+  HASHER = 'HASHER',
+  UUID_GENERATOR = 'UUID_GENERATOR',
+  REGEX_TESTER = 'REGEX_TESTER',
+  TEXT_TOOLS = 'TEXT_TOOLS',
+  COLOR_CONVERTER = 'COLOR_CONVERTER',
+  EPOCH_CONVERTER = 'EPOCH_CONVERTER',
+  JWT_DECODER = 'JWT_DECODER',
+  MARKDOWN_PREVIEW = 'MARKDOWN_PREVIEW',
+  URL_PARSER = 'URL_PARSER',
+  LOREM_IPSUM = 'LOREM_IPSUM',
+  LIST_UTILS = 'LIST_UTILS',
+  PERCENTAGE_CALC = 'PERCENTAGE_CALC',
+  KEYCODE_INFO = 'KEYCODE_INFO',
+  CSS_GRADIENT = 'CSS_GRADIENT',
+  TEXT_DIFF = 'TEXT_DIFF',
+  // New Tools
+  SYSTEM_MONITOR = 'SYSTEM_MONITOR',
+  SQL_FORMATTER = 'SQL_FORMATTER',
+  CRON_PARSER = 'CRON_PARSER',
+  CHMOD_CALC = 'CHMOD_CALC',
+  META_TAGS = 'META_TAGS',
+  IMAGE_COMPRESSOR = 'IMAGE_COMPRESSOR',
+  GIT_CHEATSHEET = 'GIT_CHEATSHEET',
+  HTTP_STATUS = 'HTTP_STATUS',
+  MIME_TYPES = 'MIME_TYPES',
+  PORT_REFERENCE = 'PORT_REFERENCE',
+  CSS_SHADOW = 'CSS_SHADOW',
+}
+
+export interface ToolDefinition {
+  id: ToolId;
+  name: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string; size?: number | string }>;
+  color: string;
+  iconColor: string;
+}
+
+export type EncodingType = 'base64' | 'url' | 'hex' | 'html' | 'radix';
