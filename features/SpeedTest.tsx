@@ -107,7 +107,7 @@ export const SpeedTest: React.FC = () => {
                             const speed = calculateSpeed(totalBytes, totalTime);
                             setCurrentSpeed(speed);
                             setProgress(10 + ((totalTime / DURATION) * 45));
-                            setChartData(prev => [...prev.slice(-49), { time: parseFloat((totalTime/1000).toFixed(1)), value: speed }]);
+                            setChartData(prev => [...prev.slice(-49), { time: parseFloat((totalTime/1000).toFixed(1)), value: parseFloat(speed.toFixed(2)) }]);
                         }
                     }
                 }
@@ -140,7 +140,7 @@ export const SpeedTest: React.FC = () => {
                  const speed = calculateSpeed(totalBytes, totalTime);
                  setCurrentSpeed(speed);
                  setProgress(55 + ((totalTime / DURATION) * 45));
-                 setChartData(prev => [...prev.slice(-49), { time: parseFloat((totalTime/1000).toFixed(1)), value: speed }]);
+                 setChartData(prev => [...prev.slice(-49), { time: parseFloat((totalTime/1000).toFixed(1)), value: parseFloat(speed.toFixed(2)) }]);
              } catch (e) { break; }
          }
     };
@@ -327,7 +327,7 @@ export const SpeedTest: React.FC = () => {
                     <Tooltip 
                         contentStyle={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
                         itemStyle={{ color: '#fff' }}
-                        formatter={(value: number) => [`${value} Mbps`, 'Speed']}
+                        formatter={(value: number) => [`${Number(value).toFixed(2)} Mbps`, 'Speed']}
                         labelFormatter={() => ''}
                     />
                     <Area 
