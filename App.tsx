@@ -452,22 +452,23 @@ const App: React.FC = () => {
   const [activeTool, setActiveTool] = useState<ToolId>(ToolId.HOME);
   const [showIntro, setShowIntro] = useState(true);
 
-  // Check if intro has been shown before (in session)
-  // Changed key to 'devbox_intro_v2' to force users to see it again after this update
+  // Check LocalStorage (permanent) instead of SessionStorage
   useEffect(() => {
-    const hasSeenIntro = sessionStorage.getItem('devbox_intro_v2');
-    if (hasSeenIntro) {
+    const hasSkippedIntro = localStorage.getItem('devbox_skip_intro');
+    if (hasSkippedIntro === 'true') {
         setShowIntro(false);
     }
   }, []);
 
-  const handleIntroComplete = () => {
+  const handleIntroComplete = (skipForever = false) => {
       setShowIntro(false);
-      sessionStorage.setItem('devbox_intro_v2', 'true');
+      if (skipForever) {
+          localStorage.setItem('devbox_skip_intro', 'true');
+      }
   };
 
   const forceReplayIntro = () => {
-      sessionStorage.removeItem('devbox_intro_v2');
+      localStorage.removeItem('devbox_skip_intro');
       setShowIntro(true);
   };
 

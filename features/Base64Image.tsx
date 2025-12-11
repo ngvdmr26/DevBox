@@ -26,7 +26,7 @@ export const Base64Image: React.FC = () => {
             <p>Кодирование изображений в строку Base64 позволяет вставлять картинки прямо в код HTML/CSS без внешних файлов. Полезно для иконок и маленьких логотипов.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
                 <div className="border-2 border-dashed border-white/10 rounded-2xl p-8 hover:bg-white/5 transition-colors text-center relative">
                     <input type="file" accept="image/*" onChange={handleFile} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />

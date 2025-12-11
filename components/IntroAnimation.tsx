@@ -1,9 +1,9 @@
 
 import React, { useEffect, useState } from 'react';
-import { Terminal, Cpu, Zap, ShieldCheck, Globe, Code2 } from 'lucide-react';
+import { Terminal, Cpu, Zap, ShieldCheck, Globe, Code2, SkipForward } from 'lucide-react';
 
 interface IntroAnimationProps {
-  onComplete: () => void;
+  onComplete: (skipForever?: boolean) => void;
 }
 
 export const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
@@ -35,7 +35,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) =>
       setTimeout(() => setStep(3), 2500); // Show final logo
     }
     if (step === 3) {
-      setTimeout(() => onComplete(), 4000); // Finish - Increased delay to allow reading description
+      setTimeout(() => onComplete(false), 4500); // Finish
     }
   }, [step, onComplete]);
 
@@ -73,7 +73,6 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) =>
         </div>
 
         {/* Stage 1: Feature Icons */}
-        {/* Added logic to fade out icons (opacity-0) when step 2 (Logo) starts */}
         <div className={`grid grid-cols-3 gap-6 mb-12 transition-all duration-1000 transform ${step === 1 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-90 blur-md'}`}>
             {[
                 { i: Terminal, l: 'Code', c: 'text-fuchsia-400' },
@@ -108,7 +107,6 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) =>
              <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2 font-['Press_Start_2P'] drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">DevBox</h1>
              <p className="text-blue-400 text-sm tracking-[0.3em] uppercase font-bold mb-6">All Systems Operational</p>
              
-             {/* Added Project Description */}
              <div className={`transition-all duration-1000 delay-700 transform ${step >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                 <p className="text-slate-300 text-sm md:text-base leading-relaxed max-w-xs mx-auto font-medium border-t border-white/10 pt-6">
                     Набор профессиональных инструментов для разработчиков: конвертеры, генераторы и утилиты в одном приложении.
@@ -116,6 +114,17 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) =>
              </div>
         </div>
 
+      </div>
+
+      {/* Skip Button - Appears late with a nice fade */}
+      <div className={`absolute bottom-8 left-0 right-0 flex justify-center transition-all duration-1000 delay-[2000ms] ${step >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <button 
+            onClick={() => onComplete(true)}
+            className="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white transition-all backdrop-blur-md active:scale-95"
+          >
+              <SkipForward size={14} className="group-hover:text-blue-400 transition-colors" />
+              <span className="text-xs uppercase tracking-widest font-bold">Больше не показывать</span>
+          </button>
       </div>
     </div>
   );

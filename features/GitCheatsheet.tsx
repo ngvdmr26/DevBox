@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card } from '../components/ui/Card';
 import { GitBranch, Terminal, ArrowLeft, Info, ChevronRight } from 'lucide-react';
@@ -54,7 +55,7 @@ export const GitCheatsheet: React.FC = () => {
                     <ArrowLeft size={16} className="mr-2" /> Назад к списку
                 </button>
 
-                <div className="bg-black/40 border border-white/10 rounded-2xl p-6 font-mono text-lg text-fuchsia-400 mb-6 shadow-inner">
+                <div className="bg-black/40 border border-white/10 rounded-2xl p-6 font-mono text-base md:text-lg text-fuchsia-400 mb-6 shadow-inner break-all">
                     {selectedCmd.c}
                 </div>
 
@@ -65,9 +66,11 @@ export const GitCheatsheet: React.FC = () => {
                     </div>
 
                     {selectedCmd.example && (
-                        <div className="bg-slate-900/50 border border-white/5 rounded-xl p-4">
+                        <div className="bg-slate-900/50 border border-white/5 rounded-xl p-4 overflow-hidden">
                             <h4 className="text-xs font-bold text-slate-500 uppercase mb-2">Пример использования</h4>
-                            <pre className="font-mono text-sm text-green-300 whitespace-pre-wrap">{selectedCmd.example}</pre>
+                            <div className="overflow-x-auto">
+                                <pre className="font-mono text-sm text-green-300 whitespace-pre-wrap break-all">{selectedCmd.example}</pre>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -96,14 +99,16 @@ export const GitCheatsheet: React.FC = () => {
                             <button 
                                 key={j} 
                                 onClick={() => setSelectedCmd(cmd)}
-                                className="w-full flex flex-col md:flex-row md:items-center border-b border-white/5 last:border-0 p-4 hover:bg-white/10 transition-colors text-left group"
+                                className="w-full flex flex-col md:flex-row md:items-center border-b border-white/5 last:border-0 p-4 hover:bg-white/10 transition-colors text-left group gap-2"
                             >
-                                <div className="flex-1 font-mono text-sm text-green-300 break-all flex gap-3 items-center mb-1 md:mb-0">
-                                    <Terminal size={14} className="opacity-50 shrink-0" />
-                                    <span className="group-hover:translate-x-1 transition-transform">{cmd.c.split(' ')[0]} <span className="text-slate-400">{cmd.c.split(' ').slice(1).join(' ')}</span></span>
+                                <div className="flex-1 font-mono text-sm text-green-300 break-all flex gap-3 items-center">
+                                    <Terminal size={14} className="opacity-50 shrink-0 hidden md:block" />
+                                    <span className="group-hover:translate-x-1 transition-transform">
+                                        <span className="break-all">{cmd.c.split(' ')[0]} <span className="text-slate-400">{cmd.c.split(' ').slice(1).join(' ')}</span></span>
+                                    </span>
                                 </div>
-                                <div className="text-sm text-slate-400 md:w-1/3 md:text-right flex items-center justify-end gap-2">
-                                    {cmd.d}
+                                <div className="text-sm text-slate-400 md:w-1/3 md:text-right flex items-center justify-between md:justify-end gap-2">
+                                    <span>{cmd.d}</span>
                                     <ChevronRight size={14} className="opacity-0 group-hover:opacity-50" />
                                 </div>
                             </button>

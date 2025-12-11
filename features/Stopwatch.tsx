@@ -49,12 +49,11 @@ export const Stopwatch: React.FC = () => {
             <p>Абстрактный визуализатор времени. Форма меняется каждую секунду, символизируя текучесть момента.</p>
         </div>
 
-        {/* Abstract Liquid Animation */}
-        <div className="relative flex justify-center items-center py-8 mb-6 h-80 overflow-hidden">
+        {/* Abstract Liquid Animation - Made Responsive */}
+        <div className="relative flex justify-center items-center py-8 mb-6 h-72 md:h-80 w-full overflow-hidden rounded-3xl bg-black/20">
              
              {/* Liquid Blob Background */}
              <div className="absolute inset-0 flex items-center justify-center">
-                 {/* CSS morphing blob */}
                  <style>{`
                     @keyframes morph {
                         0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
@@ -67,7 +66,7 @@ export const Stopwatch: React.FC = () => {
                     }
                  `}</style>
                  <div 
-                    className={`w-64 h-64 bg-gradient-to-br opacity-40 blur-xl transition-all duration-1000 ${
+                    className={`w-56 h-56 md:w-64 md:h-64 bg-gradient-to-br opacity-40 blur-xl transition-all duration-1000 ${
                         isRunning 
                         ? 'from-emerald-500 via-green-500 to-teal-500' // Green when running
                         : 'from-red-500 via-orange-500 to-rose-500' // Red/Orange when stopped
@@ -79,7 +78,7 @@ export const Stopwatch: React.FC = () => {
                  ></div>
                  
                  <div 
-                    className={`absolute w-56 h-56 border-2 transition-all duration-500 ${
+                    className={`absolute w-48 h-48 md:w-56 md:h-56 border-2 transition-all duration-500 ${
                         isRunning ? 'border-emerald-500/30' : 'border-red-500/30'
                     }`}
                     style={{
@@ -89,16 +88,16 @@ export const Stopwatch: React.FC = () => {
                  ></div>
              </div>
 
-             {/* Digital Time - Increased Size and Font */}
-             <div className="z-10 text-center">
-                 <div className={`text-6xl md:text-7xl font-mono font-bold text-white tracking-tighter drop-shadow-2xl transition-all duration-200 ${isRunning ? 'scale-105' : 'scale-100'}`}>
+             {/* Digital Time - Responsive Font */}
+             <div className="z-10 text-center relative">
+                 <div className={`text-5xl md:text-7xl font-mono font-bold text-white tracking-tighter drop-shadow-2xl transition-all duration-200 ${isRunning ? 'scale-105' : 'scale-100'}`}>
                     {formatTime(time)}
                  </div>
                  {isRunning && (
-                     <div className="text-emerald-400 text-xs font-bold uppercase tracking-[0.5em] mt-2 animate-pulse">Running</div>
+                     <div className="text-emerald-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mt-2 animate-pulse">Running</div>
                  )}
                  {!isRunning && time > 0 && (
-                     <div className="text-red-400 text-xs font-bold uppercase tracking-[0.5em] mt-2">Paused</div>
+                     <div className="text-red-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.5em] mt-2">Paused</div>
                  )}
              </div>
         </div>

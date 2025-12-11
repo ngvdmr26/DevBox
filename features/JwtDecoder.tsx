@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card } from '../components/ui/Card';
 import { ShieldAlert, CheckCircle2, FileJson, Info } from 'lucide-react';
@@ -56,7 +57,7 @@ export const JwtDecoder: React.FC = () => {
                 onChange={(e) => setToken(e.target.value)}
                 className={`
                     w-full h-32 bg-black/20 border rounded-2xl p-4 font-mono text-xs text-slate-300 
-                    outline-none resize-none backdrop-blur-sm transition-all
+                    outline-none resize-none backdrop-blur-sm transition-all break-all
                     ${error ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-pink-500/50'}
                 `}
                 placeholder="Вставьте JWT токен (ey...)"
@@ -74,23 +75,23 @@ export const JwtDecoder: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-2">
+            <div className="space-y-2 overflow-hidden">
                 <div className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
                     <FileJson size={14} /> Header
                 </div>
                 <div className="w-full h-64 bg-slate-900/50 border border-white/5 rounded-2xl p-4 overflow-auto custom-scrollbar">
-                    <pre className="text-xs md:text-sm font-mono text-purple-300">
+                    <pre className="text-xs md:text-sm font-mono text-purple-300 whitespace-pre-wrap break-all">
                         {header || <span className="text-slate-600">// Заголовок</span>}
                     </pre>
                 </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 overflow-hidden">
                 <div className="text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
                     <FileJson size={14} /> Payload
                 </div>
                 <div className="w-full h-64 bg-slate-900/50 border border-white/5 rounded-2xl p-4 overflow-auto custom-scrollbar">
-                    <pre className="text-xs md:text-sm font-mono text-pink-300">
+                    <pre className="text-xs md:text-sm font-mono text-pink-300 whitespace-pre-wrap break-all">
                         {payload || <span className="text-slate-600">// Данные (Claims)</span>}
                     </pre>
                 </div>

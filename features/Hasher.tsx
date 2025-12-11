@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
@@ -49,7 +50,7 @@ export const Hasher: React.FC = () => {
               <button
                 key={t}
                 onClick={() => setAlgo(t)}
-                className={`flex-1 py-2 px-4 rounded-lg text-xs md:text-sm font-bold transition-all duration-300 ${
+                className={`flex-1 py-2 px-2 md:px-4 rounded-lg text-[10px] md:text-sm font-bold transition-all duration-300 ${
                   algo === t 
                   ? 'bg-white/20 text-white shadow-lg backdrop-blur-md border border-white/10' 
                   : 'text-slate-400 hover:text-white hover:bg-white/5'
