@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { ToolId, ToolDefinition } from './types';
+import { IntroAnimation } from './components/IntroAnimation'; // Import Intro
+
 import { PasswordGenerator } from './features/PasswordGenerator';
 import { Encoder } from './features/Encoder';
 import { SpeedTest } from './features/SpeedTest';
@@ -23,7 +25,7 @@ import { KeycodeInfo } from './features/KeycodeInfo';
 import { CssGradient } from './features/CssGradient';
 import { TextDiff } from './features/TextDiff';
 
-// New Imports
+// Existing Tools
 import { SystemMonitor } from './features/SystemMonitor';
 import { SqlFormatter } from './features/SqlFormatter';
 import { CronParser } from './features/CronParser';
@@ -36,16 +38,36 @@ import { MimeTypes } from './features/MimeTypes';
 import { PortReference } from './features/PortReference';
 import { CssShadow } from './features/CssShadow';
 
+// New Tools Imports
+import { PomodoroTimer } from './features/PomodoroTimer';
+import { Stopwatch } from './features/Stopwatch';
+import { AspectRatioCalc } from './features/AspectRatioCalc';
+import { BorderRadiusGen } from './features/BorderRadiusGen';
+import { Base64Image } from './features/Base64Image';
+import { CsvJsonConverter } from './features/CsvJsonConverter';
+import { UserAgentParser } from './features/UserAgentParser';
+import { SlugGenerator } from './features/SlugGenerator';
+import { XmlFormatter } from './features/XmlFormatter';
+import { TextStyler } from './features/TextStyler';
+import { CurlBuilder } from './features/CurlBuilder';
+import { RomanNumerals } from './features/RomanNumerals';
+import { PassStrength } from './features/PassStrength';
+import { RandomNumber } from './features/RandomNumber';
+import { LuhnAlgo } from './features/LuhnAlgo';
+
 import { 
   KeyRound, FileCode2, Gauge, Braces, ChevronLeft,
   QrCode, Calculator, Fingerprint, Dna, Type, ScanSearch, Palette,
   Clock, ShieldAlert, FileEdit, Link, FileText, List, Percent, Keyboard,
-  Paintbrush, GitCompare,
+  Paintbrush, GitCompare, PlayCircle,
+  // Existing Icons
+  Activity, Database, CalendarClock, Lock, Globe, Image, GitBranch, Server, FileType, Network, Layers,
   // New Icons
-  Activity, Database, CalendarClock, Lock, Globe, Image, GitBranch, Server, FileType, Network, Layers
+  Timer, Watch, Ratio, Box, ImagePlus, FileSpreadsheet, MonitorSmartphone, Link2, Code, Heading, Terminal, Hash, ShieldCheck, Dices, CreditCard
 } from 'lucide-react';
 
 const TOOLS: ToolDefinition[] = [
+  // --- MOVED TO TOP ---
   {
     id: ToolId.SYSTEM_MONITOR,
     name: 'Инфо системы',
@@ -54,6 +76,128 @@ const TOOLS: ToolDefinition[] = [
     color: 'bg-red-600',
     iconColor: 'text-red-500'
   },
+  // --- New 15 Tools ---
+  {
+    id: ToolId.POMODORO,
+    name: 'Помодоро',
+    description: 'Таймер фокуссировки',
+    icon: Timer,
+    color: 'bg-red-500',
+    iconColor: 'text-red-400'
+  },
+  {
+    id: ToolId.STOPWATCH,
+    name: 'Секундомер',
+    description: 'Счетчик времени',
+    icon: Watch,
+    color: 'bg-orange-500',
+    iconColor: 'text-orange-400'
+  },
+  {
+    id: ToolId.ASPECT_RATIO,
+    name: 'Соотношение сторон',
+    description: 'Калькулятор пропорций',
+    icon: Ratio,
+    color: 'bg-yellow-500',
+    iconColor: 'text-yellow-400'
+  },
+  {
+    id: ToolId.BORDER_RADIUS,
+    name: 'Border Radius',
+    description: 'Генератор скруглений',
+    icon: Box,
+    color: 'bg-green-500',
+    iconColor: 'text-green-400'
+  },
+  {
+    id: ToolId.BASE64_IMAGE,
+    name: 'Base64 Картинка',
+    description: 'Кодирование изображений',
+    icon: ImagePlus,
+    color: 'bg-teal-500',
+    iconColor: 'text-teal-400'
+  },
+  {
+    id: ToolId.CSV_JSON,
+    name: 'CSV ↔ JSON',
+    description: 'Конвертер данных',
+    icon: FileSpreadsheet,
+    color: 'bg-cyan-500',
+    iconColor: 'text-cyan-400'
+  },
+  {
+    id: ToolId.USER_AGENT,
+    name: 'User Agent',
+    description: 'Парсер UA строки',
+    icon: MonitorSmartphone,
+    color: 'bg-blue-500',
+    iconColor: 'text-blue-400'
+  },
+  {
+    id: ToolId.SLUG_GENERATOR,
+    name: 'Slug Генератор',
+    description: 'ЧПУ ссылки',
+    icon: Link2,
+    color: 'bg-indigo-500',
+    iconColor: 'text-indigo-400'
+  },
+  {
+    id: ToolId.XML_FORMATTER,
+    name: 'XML Форматтер',
+    description: 'Beautifier для XML',
+    icon: Code,
+    color: 'bg-violet-500',
+    iconColor: 'text-violet-400'
+  },
+  {
+    id: ToolId.TEXT_STYLER,
+    name: 'Стили Текста',
+    description: 'Unicode шрифты',
+    icon: Heading,
+    color: 'bg-purple-500',
+    iconColor: 'text-purple-400'
+  },
+  {
+    id: ToolId.CURL_BUILDER,
+    name: 'Curl Builder',
+    description: 'Конструктор запросов',
+    icon: Terminal,
+    color: 'bg-fuchsia-500',
+    iconColor: 'text-fuchsia-400'
+  },
+  {
+    id: ToolId.ROMAN_NUMERALS,
+    name: 'Римские цифры',
+    description: 'Конвертер чисел',
+    icon: Hash,
+    color: 'bg-pink-500',
+    iconColor: 'text-pink-400'
+  },
+  {
+    id: ToolId.PASS_STRENGTH,
+    name: 'Анализ пароля',
+    description: 'Проверка стойкости',
+    icon: ShieldCheck,
+    color: 'bg-rose-500',
+    iconColor: 'text-rose-400'
+  },
+  {
+    id: ToolId.RANDOM_NUMBER,
+    name: 'Рандомайзер',
+    description: 'Генератор чисел',
+    icon: Dices,
+    color: 'bg-emerald-500',
+    iconColor: 'text-emerald-400'
+  },
+  {
+    id: ToolId.LUHN_ALGO,
+    name: 'Валидатор карт',
+    description: 'Алгоритм Луна',
+    icon: CreditCard,
+    color: 'bg-sky-500',
+    iconColor: 'text-sky-400'
+  },
+  // --- Existing Tools ---
   {
     id: ToolId.PASSWORD_GENERATOR,
     name: 'Пароли',
@@ -166,7 +310,6 @@ const TOOLS: ToolDefinition[] = [
     color: 'bg-violet-600',
     iconColor: 'text-violet-500'
   },
-  // Existing tools below...
   {
     id: ToolId.QR_GENERATOR,
     name: 'QR Код',
@@ -307,6 +450,26 @@ const TOOLS: ToolDefinition[] = [
 
 const App: React.FC = () => {
   const [activeTool, setActiveTool] = useState<ToolId>(ToolId.HOME);
+  const [showIntro, setShowIntro] = useState(true);
+
+  // Check if intro has been shown before (in session)
+  // Changed key to 'devbox_intro_v2' to force users to see it again after this update
+  useEffect(() => {
+    const hasSeenIntro = sessionStorage.getItem('devbox_intro_v2');
+    if (hasSeenIntro) {
+        setShowIntro(false);
+    }
+  }, []);
+
+  const handleIntroComplete = () => {
+      setShowIntro(false);
+      sessionStorage.setItem('devbox_intro_v2', 'true');
+  };
+
+  const forceReplayIntro = () => {
+      sessionStorage.removeItem('devbox_intro_v2');
+      setShowIntro(true);
+  };
 
   useEffect(() => {
     // Initialize Telegram WebApp if available
@@ -359,7 +522,6 @@ const App: React.FC = () => {
       case ToolId.KEYCODE_INFO: return <KeycodeInfo />;
       case ToolId.CSS_GRADIENT: return <CssGradient />;
       case ToolId.TEXT_DIFF: return <TextDiff />;
-      // New Tools
       case ToolId.SYSTEM_MONITOR: return <SystemMonitor />;
       case ToolId.SQL_FORMATTER: return <SqlFormatter />;
       case ToolId.CRON_PARSER: return <CronParser />;
@@ -371,6 +533,24 @@ const App: React.FC = () => {
       case ToolId.MIME_TYPES: return <MimeTypes />;
       case ToolId.PORT_REFERENCE: return <PortReference />;
       case ToolId.CSS_SHADOW: return <CssShadow />;
+      
+      // New Tools
+      case ToolId.POMODORO: return <PomodoroTimer />;
+      case ToolId.STOPWATCH: return <Stopwatch />;
+      case ToolId.ASPECT_RATIO: return <AspectRatioCalc />;
+      case ToolId.BORDER_RADIUS: return <BorderRadiusGen />;
+      case ToolId.BASE64_IMAGE: return <Base64Image />;
+      case ToolId.CSV_JSON: return <CsvJsonConverter />;
+      case ToolId.USER_AGENT: return <UserAgentParser />;
+      case ToolId.SLUG_GENERATOR: return <SlugGenerator />;
+      case ToolId.XML_FORMATTER: return <XmlFormatter />;
+      case ToolId.TEXT_STYLER: return <TextStyler />;
+      case ToolId.CURL_BUILDER: return <CurlBuilder />;
+      case ToolId.ROMAN_NUMERALS: return <RomanNumerals />;
+      case ToolId.PASS_STRENGTH: return <PassStrength />;
+      case ToolId.RANDOM_NUMBER: return <RandomNumber />;
+      case ToolId.LUHN_ALGO: return <LuhnAlgo />;
+
       default:
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 animate-in fade-in zoom-in-95 duration-500 pb-10">
@@ -414,7 +594,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pb-12 relative z-10 selection:bg-blue-500/30">
+    <>
+    {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
+    <div className={`min-h-screen pb-12 relative z-10 selection:bg-blue-500/30 transition-opacity duration-1000 ${showIntro ? 'opacity-0' : 'opacity-100'}`}>
       {/* Absolute Dark Header with Light Beam */}
       <header className="sticky top-0 z-50 bg-[#000] border-b border-white/10 shadow-lg shadow-black/50 overflow-hidden">
         
@@ -463,9 +645,16 @@ const App: React.FC = () => {
       {/* Footer info */}
       <footer className="mt-16 text-center text-slate-500 text-sm pb-8 font-medium">
         <p className="mb-1">DevBox &copy; {new Date().getFullYear()}</p>
-        <p className="text-slate-600 text-xs">Essential Tools for Developers</p>
+        <p className="text-slate-600 text-xs mb-2">Essential Tools for Developers</p>
+        <button 
+            onClick={forceReplayIntro}
+            className="text-[10px] uppercase tracking-widest text-slate-700 hover:text-blue-500 transition-colors flex items-center justify-center gap-1 mx-auto"
+        >
+            <PlayCircle size={10} /> Play Intro
+        </button>
       </footer>
     </div>
+    </>
   );
 };
 
